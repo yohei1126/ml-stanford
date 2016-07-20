@@ -21,11 +21,17 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
-
+for i = 1:size(X,1)
+  min_dif = inf;
+  for j = 1:K
+    diff = X(i, :)'-centroids(j, :)';
+    tmp_dif = diff'*diff;
+    if tmp_dif < min_dif
+      min_dif = tmp_dif;
+      idx(i) = j;
+    end
+  end
+end
 
 % =============================================================
 
